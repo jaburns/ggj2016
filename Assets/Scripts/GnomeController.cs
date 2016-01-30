@@ -2,7 +2,7 @@
 
 public class GnomeController : MonoBehaviour
 {
-    const float JUMP_HEAD_BOOST = 1f;
+    const float JUMP_HEAD_BOOST = .9f;
     public float MaxRunSpeed;
     public float JumpImpulse;
     public float RunForce;
