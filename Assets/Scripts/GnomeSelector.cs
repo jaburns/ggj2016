@@ -14,8 +14,12 @@ public class GnomeSelector : MonoBehaviour
         var gnome = overlap.GetComponent<GnomeController>();
         if (gnome == null) return;
 
-        foreach (var g in FindObjectsOfType<GnomeController>()) {
-            g.SetSelected(g == gnome);
+        if (Input.GetKey(KeyCode.LeftShift)) {
+            gnome.SetSelected(true);
+        } else {
+            foreach (var g in FindObjectsOfType<GnomeController>()) {
+                g.SetSelected(g == gnome);
+            }
         }
     }
 }
