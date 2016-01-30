@@ -19,9 +19,7 @@ public class GnomeSelector : MonoBehaviour
         if (gnome == null) return;
 
         foreach (var g in _allGnomes) {
-            if (g.MyColor == gnome.MyColor) {
-                g.SetSelected(g == gnome);
-            }
+            g.SetSelected(g == gnome);
         }
     }
 }
