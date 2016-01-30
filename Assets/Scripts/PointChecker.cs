@@ -11,7 +11,7 @@ public class PointChecker : MonoBehaviour
     Red,
     Yellow
   }
-   
+
   int numberOfCollidingGnomes = 0;
 
   void Update()

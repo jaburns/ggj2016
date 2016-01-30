@@ -15,7 +15,6 @@ public class GnomeController : MonoBehaviour
     }
 
     public GnomeColor MyColor;
-    public int SelectionIndex;
 
     Rigidbody2D _rb;
     GnomeController _onHead;
@@ -74,6 +73,7 @@ public class GnomeController : MonoBehaviour
 
         OnCollisionStay2D(col);
     }
+
     void OnCollisionStay2D(Collision2D col)
     {
         var colGnome = col.collider.gameObject.GetComponent<GnomeController>();
