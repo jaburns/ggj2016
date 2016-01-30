@@ -1,15 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GnomeController : MonoBehaviour {
+public class GnomeController : MonoBehaviour
+{
+    public enum GnomeColor {
+        Red,
+        Yellow
+    }
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public GnomeColor MyColor;
+
+    void FixedUpdate()
+    {
+        var inputs = InputGrabber.Instance.GetInputsForColor(MyColor);
+    }
 }
