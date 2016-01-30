@@ -51,6 +51,7 @@ public class GnomeController : MonoBehaviour
 
         if (inputs.JumpButton.JustPressed && _grounded) {
             _rb.AddForce(JumpImpulse * Vector2.up, ForceMode2D.Impulse);
+            SoundPlayer.Instance.Play("Jump");
             _grounded = false;
         }
 
