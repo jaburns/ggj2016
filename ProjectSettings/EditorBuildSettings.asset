@@ -8,4 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Menu.unity
   - enabled: 1
+    path: Assets/Loader.unity
+  - enabled: 1
     path: Assets/Main.unity
