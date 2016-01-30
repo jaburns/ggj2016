@@ -14,17 +14,24 @@ public class GnomeController : MonoBehaviour
     }
 
     public GnomeColor MyColor;
+    public int SelectionIndex;
 
     Rigidbody2D _rb;
     GnomeController _onHead;
+    bool _selected;
 
     void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _selected = false;
     }
 
     void FixedUpdate()
     {
+        if (InputGrabber.Instance.SelectionButtons[SelectionIndex].JustPressed) {
+            _selected = true;
+        }
+
         var inputs = InputGrabber.Instance.GetInputsForColor(MyColor);
 
         var runForce = RunForce * Vector2.right * inputs.WalkAxis;
