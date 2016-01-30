@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class StartBlock : MonoBehaviour
 {
@@ -6,6 +7,7 @@ public class StartBlock : MonoBehaviour
 
     Vector3 _originalPos;
     float _bounceT;
+    bool _started;
 
     void Awake()
     {
@@ -26,10 +28,17 @@ public class StartBlock : MonoBehaviour
 
         if (JustSound) {
             // TODO play sound
-        } else {
-            Application.LoadLevel("Level_0");
+        } else if (!_started) {
+            _started = true;
+            StartCoroutine(waitAndLoad());
         }
         _bounceT = 0;
+    }
+
+    IEnumerator waitAndLoad()
+    {
+        yield return new WaitForSeconds(.3f);
+        Application.LoadLevel("Level_0");
     }
 
     void Update()
