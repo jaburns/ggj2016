@@ -17,7 +17,7 @@ public class MenuScript : MonoBehaviour
     OptionsMenuScreen.SetActive(true);
   }
 
-  public void QuitButtonClick() 
+  public void QuitButtonClick()
   {
     Application.Quit();
   }
