@@ -40,13 +40,13 @@ public class InputGrabber : Singleton<InputGrabber>
         }
     }
 
-    const int SELECTION_KEYS_START_INDEX = 6;
-    const int SELECTION_KEYS_COUNT = 10;
+    public const int SELECTION_KEYS_START_INDEX = 6;
+    public const int SELECTION_KEYS_COUNT = 10;
 
     readonly KeyCode[] WATCH_KEYS = {
         KeyCode.LeftArrow, KeyCode.RightArrow, KeyCode.UpArrow, KeyCode.A, KeyCode.D, KeyCode.W,
-        KeyCode.Alpha0, KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4,
-        KeyCode.Alpha5, KeyCode.Alpha6, KeyCode.Alpha7, KeyCode.Alpha8, KeyCode.Alpha9
+        KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4, KeyCode.Alpha5,
+        KeyCode.Alpha6, KeyCode.Alpha7, KeyCode.Alpha8, KeyCode.Alpha9, KeyCode.Alpha0
     };
 
     GnomeInputState _curRedInputs;
@@ -73,6 +73,11 @@ public class InputGrabber : Singleton<InputGrabber>
             case GnomeController.GnomeColor.Red: return _curRedInputs;
             case GnomeController.GnomeColor.Yellow: return _curYellowInputs;
         }
+        return new GnomeInputState();
+    }
+
+    public GnomeInputState GetEmptyInputs()
+    {
         return new GnomeInputState();
     }
 
