@@ -6,7 +6,9 @@ public class SphereChecker : MonoBehaviour
   public GameObject checkedObject;
 
   public GnomeColorRequirement requireColor;
-  public enum GnomeColorRequirement {
+
+  public enum GnomeColorRequirement
+  {
     Any,
     Red,
     Yellow
@@ -14,13 +16,21 @@ public class SphereChecker : MonoBehaviour
 
   int numberOfCollidingGnomes = 0;
 
+  public bool isChecked
+  {
+    get
+    {
+      return numberOfCollidingGnomes > 0;
+    }
+  }
 
   void Update()
   {
-    if(numberOfCollidingGnomes > 0)
+    if (isChecked)
     {
       checkedObject.SetActive(true);
-    } else {
+    } else
+    {
       checkedObject.SetActive(false);
     }
   }
@@ -30,9 +40,10 @@ public class SphereChecker : MonoBehaviour
     var component = other.gameObject.GetComponent<GnomeController>();
     if (component != null)
     {
-      if((requireColor == GnomeColorRequirement.Red && component.MyColor == GnomeController.GnomeColor.Red) ||
-        (requireColor == GnomeColorRequirement.Yellow && component.MyColor == GnomeController.GnomeColor.Yellow) ||
-        requireColor == GnomeColorRequirement.Any){
+      if ((requireColor == GnomeColorRequirement.Red && component.MyColor == GnomeController.GnomeColor.Red) ||
+         (requireColor == GnomeColorRequirement.Yellow && component.MyColor == GnomeController.GnomeColor.Yellow) ||
+         requireColor == GnomeColorRequirement.Any)
+      {
         numberOfCollidingGnomes++;
       }
     }
@@ -43,9 +54,10 @@ public class SphereChecker : MonoBehaviour
     var component = other.gameObject.GetComponent<GnomeController>();
     if (component != null)
     {
-      if((requireColor == GnomeColorRequirement.Red && component.MyColor == GnomeController.GnomeColor.Red) ||
-        (requireColor == GnomeColorRequirement.Yellow && component.MyColor == GnomeController.GnomeColor.Yellow) ||
-        requireColor == GnomeColorRequirement.Any){
+      if ((requireColor == GnomeColorRequirement.Red && component.MyColor == GnomeController.GnomeColor.Red) ||
+         (requireColor == GnomeColorRequirement.Yellow && component.MyColor == GnomeController.GnomeColor.Yellow) ||
+         requireColor == GnomeColorRequirement.Any)
+      {
         numberOfCollidingGnomes--;
       }
     }
