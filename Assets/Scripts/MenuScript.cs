@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.SceneManagement;
 
 public class MenuScript : MonoBehaviour
 {
@@ -9,7 +8,7 @@ public class MenuScript : MonoBehaviour
 
   public void StartButtonClick()
   {
-    SceneManager.LoadScene(1);
+    Application.LoadLevel(1);
   }
 
   public void OptionsButtonClick()
