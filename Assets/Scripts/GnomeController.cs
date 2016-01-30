@@ -26,17 +26,16 @@ public class GnomeController : MonoBehaviour
         _selected = false;
     }
 
+    public void SetSelected(bool selected)
+    {
+        _selected = selected;
+    }
+
     void FixedUpdate()
     {
-        for (int i = 0; i < InputGrabber.SELECTION_KEYS_COUNT; ++i) {
-            if (InputGrabber.Instance.SelectionButtons[i].JustPressed) {
-                _selected = SelectionIndex == i;
-            }
-        }
-
         var inputs = _selected
             ? InputGrabber.Instance.GetInputsForColor(MyColor)
-            : InputGrabber.Instance.GetEmptyInputs();
+            : InputGrabber.EmptyInputs;
 
         var runForce = RunForce * Vector2.right * inputs.WalkAxis;
         if (runForce.x * _rb.velocity.x < 0) runForce *= TurnAroundMultiplier;

@@ -40,31 +40,21 @@ public class InputGrabber : Singleton<InputGrabber>
         }
     }
 
-    public const int SELECTION_KEYS_START_INDEX = 6;
-    public const int SELECTION_KEYS_COUNT = 10;
-
     readonly KeyCode[] WATCH_KEYS = {
-        KeyCode.LeftArrow, KeyCode.RightArrow, KeyCode.UpArrow, KeyCode.A, KeyCode.D, KeyCode.W,
-        KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4, KeyCode.Alpha5,
-        KeyCode.Alpha6, KeyCode.Alpha7, KeyCode.Alpha8, KeyCode.Alpha9, KeyCode.Alpha0
+        KeyCode.LeftArrow, KeyCode.RightArrow, KeyCode.UpArrow, KeyCode.A, KeyCode.D, KeyCode.W, KeyCode.Tab
     };
 
     GnomeInputState _curRedInputs;
     GnomeInputState _curYellowInputs;
 
-    Button[] _selectionButtons;
+    public Button SelectionButton { get; private set; }
 
     List<KeyCode> _keysDown;
     bool _inputWasProcessed;
 
-    public Button[] SelectionButtons {
-        get { return _selectionButtons; }
-    }
-
     void Awake()
     {
         _keysDown = new List<KeyCode>();
-        _selectionButtons = new Button[SELECTION_KEYS_COUNT];
     }
 
     public GnomeInputState GetInputsForColor(GnomeController.GnomeColor color)
@@ -76,9 +66,11 @@ public class InputGrabber : Singleton<InputGrabber>
         return new GnomeInputState();
     }
 
-    public GnomeInputState GetEmptyInputs()
+    static public GnomeInputState EmptyInputs
     {
-        return new GnomeInputState();
+        get {
+            return new GnomeInputState();
+        }
     }
 
     void Update()
@@ -107,9 +99,7 @@ public class InputGrabber : Singleton<InputGrabber>
             _keysDown.Contains(KeyCode.D),
             _keysDown.Contains(KeyCode.W));
 
-        for (int i = 0; i < SELECTION_KEYS_COUNT; ++i) {
-            _selectionButtons[i] = _selectionButtons[i].Step(_keysDown.Contains(WATCH_KEYS[i + SELECTION_KEYS_START_INDEX]));
-        }
+        SelectionButton = SelectionButton.Step(_keysDown.Contains(KeyCode.Tab));
 
         _inputWasProcessed = true;
     }
