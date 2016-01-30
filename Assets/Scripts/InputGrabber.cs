@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class InputGrabber : Singleton<InputGrabber>
 {
@@ -20,44 +21,40 @@ public class InputGrabber : Singleton<InputGrabber>
 
     public struct GnomeInputState
     {
-        public bool Walking;
-        public float WalkAxis;
+        public Button LeftButton;
+        public Button RightButton;
         public Button JumpButton;
+        public float WalkAxis;
 
-        public GnomeInputState UpdateWithKeys(KeyStates keys)
+        public GnomeInputState Step(bool left, bool right, bool up)
         {
-            var walkAxis = keys.LeftKey ? -1f : keys.RightKey ? 1f : 0f; // : Input.GetAxis("Horizontal");
-
-            return new GnomeInputState {
-                Walking = Mathf.Abs(walkAxis) > 0.1f,
-                WalkAxis = walkAxis,
-                JumpButton = JumpButton.Step(keys.JumpKey)
+            var newState = new GnomeInputState {
+                LeftButton = LeftButton.Step(left),
+                RightButton = RightButton.Step(right),
+                JumpButton = JumpButton.Step(up),
             };
+
+            newState.WalkAxis = newState.RightButton.Pressing ? 1f : newState.LeftButton.Pressing ? -1f : 0;
+
+            return newState;
         }
     }
 
-    public struct KeyStates
-    {
-        public bool LeftKey;
-        public bool RightKey;
-        public bool JumpKey;
-
-        public KeyStates UpdateWithInputs(bool left, bool right, bool up)
-        {
-            return new KeyStates {
-                LeftKey = LeftKey | left,
-                RightKey = RightKey | right,
-                JumpKey = JumpKey | up
-            };
-        }
-    }
+    readonly KeyCode[] WATCH_KEYS = {
+        KeyCode.LeftArrow, KeyCode.RightArrow, KeyCode.UpArrow,
+        KeyCode.A, KeyCode.D, KeyCode.W
+    };
 
     GnomeInputState _curRedInputs;
-    KeyStates _curRedKeys;
     GnomeInputState _curYellowInputs;
-    KeyStates _curYellowKeys;
 
+    List<KeyCode> _keysDown;
     bool _inputWasProcessed;
+
+    void Awake()
+    {
+        _keysDown = new List<KeyCode>();
+    }
 
     public GnomeInputState GetInputsForColor(GnomeController.GnomeColor color)
     {
@@ -72,25 +69,28 @@ public class InputGrabber : Singleton<InputGrabber>
     {
         if (_inputWasProcessed) {
             _inputWasProcessed = false;
-            _curRedKeys = new KeyStates();
-            _curYellowKeys = new KeyStates();
+            _keysDown.Clear();
         }
 
-        _curRedKeys.UpdateWithInputs(
-            Input.GetKey(KeyCode.LeftArrow),
-            Input.GetKey(KeyCode.RightArrow),
-            Input.GetKey(KeyCode.UpArrow));
-
-        _curYellowKeys.UpdateWithInputs(
-            Input.GetKey(KeyCode.A),
-            Input.GetKey(KeyCode.D),
-            Input.GetKey(KeyCode.W));
+        foreach (var key in WATCH_KEYS) {
+            if (!_keysDown.Contains(key) && Input.GetKey(key)) {
+                _keysDown.Add(key);
+            }
+        }
     }
 
     void FixedUpdate()
     {
-        _curRedInputs = _curRedInputs.UpdateWithKeys(_curRedKeys);
-        _curYellowInputs = _curYellowInputs.UpdateWithKeys(_curYellowKeys);
+        _curRedInputs = _curRedInputs.Step(
+            _keysDown.Contains(KeyCode.LeftArrow),
+            _keysDown.Contains(KeyCode.RightArrow),
+            _keysDown.Contains(KeyCode.UpArrow));
+
+        _curYellowInputs = _curYellowInputs.Step(
+            _keysDown.Contains(KeyCode.A),
+            _keysDown.Contains(KeyCode.D),
+            _keysDown.Contains(KeyCode.W));
+
         _inputWasProcessed = true;
     }
 }
