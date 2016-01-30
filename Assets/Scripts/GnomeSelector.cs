@@ -2,13 +2,6 @@
 
 public class GnomeSelector : MonoBehaviour
 {
-    GnomeController[] _allGnomes;
-
-    void Start()
-    {
-        _allGnomes = FindObjectsOfType<GnomeController>();
-    }
-
     void Update()
     {
         var mouseDown = Input.GetMouseButtonDown(0);
@@ -21,7 +14,7 @@ public class GnomeSelector : MonoBehaviour
         var gnome = overlap.GetComponent<GnomeController>();
         if (gnome == null) return;
 
-        foreach (var g in _allGnomes) {
+        foreach (var g in FindObjectsOfType<GnomeController>()) {
             g.SetSelected(g == gnome);
         }
     }
