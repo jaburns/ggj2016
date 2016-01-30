@@ -4,7 +4,7 @@ public class SceneLoader : Singleton<SceneLoader>
 {
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        if (KeepAcrossScenes()) return;
 
         if (Application.loadedLevelName != "Loader") {
             Application.LoadLevelAdditive("Loader");

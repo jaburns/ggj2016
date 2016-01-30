@@ -23,6 +23,18 @@ public class Singleton<T> : MonoBehaviour where T : Singleton<T>
         }
     }
 
+    protected bool KeepAcrossScenes()
+    {
+        DontDestroyOnLoad(gameObject);
+
+        if (FindObjectsOfType<SceneLoader>().Length > 1) {
+            Destroy(gameObject);
+            return true;
+        }
+
+        return false;
+    }
+
     public void OnApplicationQuit()
     {
         s_quitting = true;
