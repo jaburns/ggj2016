@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxRunSpeed: 2
-  JumpImpulse: 15
+  JumpImpulse: 12
   RunForce: 10
   TurnAroundMultiplier: 1
   DecelMultiplier: .850000024
@@ -191,7 +191,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: JumpImpulse
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 167944}
