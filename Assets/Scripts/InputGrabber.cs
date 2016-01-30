@@ -41,15 +41,10 @@ public class InputGrabber : Singleton<InputGrabber>
     }
 
     readonly KeyCode[] WATCH_KEYS = {
-        KeyCode.LeftArrow, KeyCode.RightArrow, KeyCode.UpArrow, KeyCode.A, KeyCode.D, KeyCode.W, KeyCode.Tab, KeyCode.BackQuote
+        KeyCode.A, KeyCode.D, KeyCode.W
     };
 
-    GnomeInputState _curRedInputs;
-    GnomeInputState _curYellowInputs;
-
-    public Button SelectionButton { get; private set; }
-    public Button SelectionButton2 { get; private set; }
-
+    GnomeInputState _curInputs;
     List<KeyCode> _keysDown;
     bool _inputWasProcessed;
 
@@ -58,13 +53,11 @@ public class InputGrabber : Singleton<InputGrabber>
         _keysDown = new List<KeyCode>();
     }
 
-    public GnomeInputState GetInputsForColor(GnomeController.GnomeColor color)
+    public GnomeInputState CurrentGnomeInputs
     {
-        switch (color) {
-            case GnomeController.GnomeColor.Red: return _curRedInputs;
-            case GnomeController.GnomeColor.Yellow: return _curYellowInputs;
+        get {
+            return _curInputs;
         }
-        return new GnomeInputState();
     }
 
     static public GnomeInputState EmptyInputs
@@ -90,18 +83,10 @@ public class InputGrabber : Singleton<InputGrabber>
 
     void FixedUpdate()
     {
-        _curRedInputs = _curRedInputs.Step(
-            _keysDown.Contains(KeyCode.LeftArrow),
-            _keysDown.Contains(KeyCode.RightArrow),
-            _keysDown.Contains(KeyCode.UpArrow));
-
-        _curYellowInputs = _curYellowInputs.Step(
+        _curInputs = _curInputs.Step(
             _keysDown.Contains(KeyCode.A),
             _keysDown.Contains(KeyCode.D),
             _keysDown.Contains(KeyCode.W));
-
-        SelectionButton = SelectionButton.Step(_keysDown.Contains(KeyCode.Tab));
-        SelectionButton2 = SelectionButton2.Step(_keysDown.Contains(KeyCode.BackQuote));
 
         _inputWasProcessed = true;
     }

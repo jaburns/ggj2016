@@ -37,7 +37,7 @@ public class GnomeController : MonoBehaviour
     void FixedUpdate()
     {
         var inputs = _selected
-            ? InputGrabber.Instance.GetInputsForColor(MyColor)
+            ? InputGrabber.Instance.CurrentGnomeInputs
             : InputGrabber.EmptyInputs;
 
         var runForce = RunForce * Vector2.right * inputs.WalkAxis;
