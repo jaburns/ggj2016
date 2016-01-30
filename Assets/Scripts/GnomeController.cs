@@ -2,6 +2,7 @@
 
 public class GnomeController : MonoBehaviour
 {
+    const float JUMP_HEAD_BOOST = .9f;
     public float MaxRunSpeed;
     public float JumpImpulse;
     public float RunForce;
@@ -50,6 +51,10 @@ public class GnomeController : MonoBehaviour
         }
 
         if (inputs.JumpButton.JustPressed && _grounded) {
+            if (_onHead) {
+                var hb = _onHead.GetComponent<Rigidbody2D>();
+                hb.AddForce(Vector2.up * JUMP_HEAD_BOOST, ForceMode2D.Impulse);
+            }
             _rb.AddForce(JumpImpulse * Vector2.up, ForceMode2D.Impulse);
             //SoundPlayer.Instance.Play("Jump");
             _grounded = false;
@@ -69,6 +74,7 @@ public class GnomeController : MonoBehaviour
         }
 
         _onHead = null;
+        _grounded = false;
     }
 
     float redStepSoundInterval = .3f;
@@ -101,12 +107,15 @@ public class GnomeController : MonoBehaviour
             }
 
         }
-
         OnCollisionStay2D(col);
     }
 
     void OnCollisionStay2D(Collision2D col)
     {
+        foreach (var contact in col.contacts) {
+            if (contact.normal.y > 0.8f) _grounded = true;
+        }
+
         var colGnome = col.collider.gameObject.GetComponent<GnomeController>();
         if (colGnome == null) return;
 
