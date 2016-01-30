@@ -5,6 +5,7 @@ public class GnomeSelector : MonoBehaviour
     GnomeController[] _allGnomes;
     int _maxIndex;
     int _curIndex;
+    int _curIndex2;
 
     void Start()
     {
@@ -27,9 +28,16 @@ public class GnomeSelector : MonoBehaviour
         if (InputGrabber.Instance.SelectionButton.JustPressed) {
             _curIndex = (_curIndex + 1) % (_maxIndex + 1);
         }
+        if (InputGrabber.Instance.SelectionButton2.JustPressed) {
+            _curIndex2 = (_curIndex2 + 1) % (_maxIndex + 1);
+        }
 
         foreach (var gnome in _allGnomes) {
-            gnome.SetSelected(gnome.SelectionIndex == _curIndex);
+            if (gnome.MyColor == GnomeController.GnomeColor.Red) {
+                gnome.SetSelected(gnome.SelectionIndex == _curIndex);
+            } else {
+                gnome.SetSelected(gnome.SelectionIndex == _curIndex2);
+            }
         }
     }
 }

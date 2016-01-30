@@ -20,6 +20,7 @@ public class GnomeController : MonoBehaviour
     Rigidbody2D _rb;
     GnomeController _onHead;
     bool _selected;
+    bool _grounded;
 
     void Awake()
     {
@@ -49,8 +50,9 @@ public class GnomeController : MonoBehaviour
             hb.AddForce(runForce / _rb.mass * hb.mass);
         }
 
-        if (inputs.JumpButton.JustPressed) {
+        if (inputs.JumpButton.JustPressed && _grounded) {
             _rb.AddForce(JumpImpulse * Vector2.up, ForceMode2D.Impulse);
+            _grounded = false;
         }
 
         if (Mathf.Abs(_rb.velocity.x) > MaxRunSpeed) {
@@ -64,7 +66,14 @@ public class GnomeController : MonoBehaviour
         _onHead = null;
     }
 
-    void OnCollisionEnter2D(Collision2D col) { OnCollisionStay2D(col); }
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        foreach (var contact in col.contacts) {
+            if (contact.normal.y > 0.8f) _grounded = true;
+        }
+
+        OnCollisionStay2D(col);
+    }
     void OnCollisionStay2D(Collision2D col)
     {
         var colGnome = col.collider.gameObject.GetComponent<GnomeController>();

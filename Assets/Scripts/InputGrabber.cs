@@ -41,13 +41,14 @@ public class InputGrabber : Singleton<InputGrabber>
     }
 
     readonly KeyCode[] WATCH_KEYS = {
-        KeyCode.LeftArrow, KeyCode.RightArrow, KeyCode.UpArrow, KeyCode.A, KeyCode.D, KeyCode.W, KeyCode.Tab
+        KeyCode.LeftArrow, KeyCode.RightArrow, KeyCode.UpArrow, KeyCode.A, KeyCode.D, KeyCode.W, KeyCode.Tab, KeyCode.BackQuote
     };
 
     GnomeInputState _curRedInputs;
     GnomeInputState _curYellowInputs;
 
     public Button SelectionButton { get; private set; }
+    public Button SelectionButton2 { get; private set; }
 
     List<KeyCode> _keysDown;
     bool _inputWasProcessed;
@@ -100,6 +101,7 @@ public class InputGrabber : Singleton<InputGrabber>
             _keysDown.Contains(KeyCode.W));
 
         SelectionButton = SelectionButton.Step(_keysDown.Contains(KeyCode.Tab));
+        SelectionButton2 = SelectionButton2.Step(_keysDown.Contains(KeyCode.BackQuote));
 
         _inputWasProcessed = true;
     }
