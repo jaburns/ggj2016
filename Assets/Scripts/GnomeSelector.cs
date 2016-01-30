@@ -21,5 +21,6 @@ public class GnomeSelector : MonoBehaviour
                 g.SetSelected(g == gnome);
             }
         }
+        SoundPlayer.Instance.Play("CreatureNoises");
     }
 }

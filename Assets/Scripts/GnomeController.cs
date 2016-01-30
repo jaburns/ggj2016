@@ -51,7 +51,7 @@ public class GnomeController : MonoBehaviour
 
         if (inputs.JumpButton.JustPressed && _grounded) {
             _rb.AddForce(JumpImpulse * Vector2.up, ForceMode2D.Impulse);
-            SoundPlayer.Instance.Play("Jump");
+            //SoundPlayer.Instance.Play("Jump");
             _grounded = false;
         }
 
@@ -63,13 +63,43 @@ public class GnomeController : MonoBehaviour
             _rb.velocity = _rb.velocity.WithX(_rb.velocity.x * DecelMultiplier);
         }
 
+        if(Mathf.Abs(_rb.velocity.x) > 1 && _grounded)
+        {
+            WalkSound();
+        }
+
         _onHead = null;
+    }
+
+    float redStepSoundInterval = .3f;
+    float yellowStepSoundInterval = .2f;
+
+    float lastStepTime = 0;
+
+    void WalkSound()
+    {   
+        float interval = MyColor==GnomeColor.Red? redStepSoundInterval: yellowStepSoundInterval;
+        if(lastStepTime + interval < Time.time)
+        {
+            lastStepTime = Time.time;
+            SoundPlayer.Instance.Play("Walking");
+        }
     }
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        foreach (var contact in col.contacts) {
-            if (contact.normal.y > 0.8f) _grounded = true;
+        foreach (var contact in col.contacts) 
+        {
+            if (contact.normal.y > 0.8f) 
+            {
+                _grounded = true;
+                if(MyColor==GnomeColor.Red){
+                    SoundPlayer.Instance.Play("CreatureLandBig");
+                } else {
+                    SoundPlayer.Instance.Play("CreatureLand");
+                }
+            }
+
         }
 
         OnCollisionStay2D(col);
