@@ -5,6 +5,7 @@ public class MonsterController : MonoBehaviour
 {
     Rigidbody2D _rb;
     bool _startedWriting;
+    bool _done;
 
     void Start ()
     {
@@ -22,23 +23,40 @@ public class MonsterController : MonoBehaviour
 
     void OnNightEnd()
     {
+        if (_done) return;
+        _done = true;
         StartCoroutine(angryRoutine());
+    }
+
+    public void GnomesWin()
+    {
+        if (_done) return;
+        _done = true;
+        StartCoroutine(happyRoutine());
+    }
+
+    IEnumerator happyRoutine()
+    {
+        transform.localScale *= 0.5f;
+        GnomeSelector.gnomesEnabled = false;
+        yield return new WaitForSeconds(1f);
+        SceneLoader.NextLevel();
     }
 
     IEnumerator writeRoutine()
     {
         yield return new WaitForSeconds(1f);
         transform.localScale *= 0.9f;
-        SkyBoxController.Instance.StartNight();
-        GnomeSelector.gnomesEnabled = false;
+        SkyBoxController.Instance.StartNight(FindObjectOfType<LevelTime>().LevelLength);
+        GnomeSelector.gnomesEnabled = true;
     }
 
     IEnumerator angryRoutine()
     {
-        GnomeSelector.gnomesEnabled = false;
         transform.localScale *= 1.5f;
+        GnomeSelector.gnomesEnabled = false;
         yield return new WaitForSeconds(1f);
-        Application.LoadLevel(Application.loadedLevelName);
+        SceneLoader.ReloadLevel();
     }
 
     void OnCollisionEnter2D()

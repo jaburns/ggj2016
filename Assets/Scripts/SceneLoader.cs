@@ -15,4 +15,14 @@ public class SceneLoader : Singleton<SceneLoader>
             Application.LoadLevelAdditive("Level_0");
         }
     }
+
+    static public void NextLevel()
+    {
+        Application.LoadLevel("Level_1");
+    }
+
+    static public void ReloadLevel()
+    {
+        Application.LoadLevel(Application.loadedLevelName);
+    }
 }

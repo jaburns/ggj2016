@@ -4,16 +4,21 @@ using System.Collections;
 public class FormChecker : MonoBehaviour
 {
   public GameObject doneCube;
-	
+
   public bool isChecked = false;
   float timer = 0;
+
+  void Awake()
+  {
+      doneCube.SetActive(false);
+  }
 
   void Update()
   {
     var formChecked = true;
     foreach (Transform sphereTransform in transform)
     {
-      
+
       var sphere = sphereTransform.gameObject;
 
       var checker = sphere.GetComponent<SphereChecker>();
@@ -35,7 +40,7 @@ public class FormChecker : MonoBehaviour
       timer += Time.deltaTime;
     }
 
-    if (timer > 2)
+    if (timer > 1)
     {
       isChecked = true;
     } else
@@ -44,12 +49,9 @@ public class FormChecker : MonoBehaviour
     }
 
 
-    if (isChecked)
-    {
-      doneCube.SetActive(true);
-    } else
-    {
-      doneCube.SetActive(false);
+    if (isChecked) {
+        Destroy(this);
+        FindObjectOfType<MonsterController>().GnomesWin();
     }
   }
 }

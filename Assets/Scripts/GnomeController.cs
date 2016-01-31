@@ -37,7 +37,7 @@ public class GnomeController : MonoBehaviour
 
     void FixedUpdate()
     {
-        var inputs = _selected
+        var inputs = _selected && GnomeSelector.gnomesEnabled
             ? InputGrabber.Instance.CurrentGnomeInputs
             : InputGrabber.EmptyInputs;
 

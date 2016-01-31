@@ -70,8 +70,9 @@ public class SkyBoxController : Singleton<SkyBoxController>
         }
     }
 
-    public void StartNight()
+    public void StartNight(float seconds)
     {
+        NightTimeScale = 1 / seconds;
         _paused = false;
     }
 

@@ -340,6 +340,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 11484726, guid: bb9c530a5014d44bf93729bc5cf80431, type: 2}
+      propertyPath: NightTimeScale
+      value: .0199999996
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bb9c530a5014d44bf93729bc5cf80431, type: 2}
   m_IsPrefabParent: 0
