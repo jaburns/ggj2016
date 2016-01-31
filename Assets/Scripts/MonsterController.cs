@@ -60,8 +60,6 @@ public class MonsterController : MonoBehaviour
 
     IEnumerator happyRoutine()
     {
-                        //StartCoroutine(fenceRoutine());
-
         transform.localScale *= 0.5f;
         GnomeSelector.gnomesEnabled = false;
         MusicPlayer.Instance.Stop();
@@ -78,6 +76,7 @@ public class MonsterController : MonoBehaviour
         GnomeSelector.gnomesEnabled = true;
         if (_whiteboard != null) _whiteboard.SetActive(true);
         MusicPlayer.Instance.PlayTrack("Puzzle"+(SceneLoader.CurLevel+1), false);
+        StartCoroutine(fenceRoutine());
     }
 
     IEnumerator angryRoutine()
@@ -92,9 +91,11 @@ public class MonsterController : MonoBehaviour
 
     IEnumerator fenceRoutine()
     {
-        return null;
-//        yield
-//        _fence.
+        while (true) {
+            _fence.transform.position -= Vector3.up * 12f * Time.deltaTime;
+            if (_fence.transform.position.y < -100) break;
+            yield return new WaitForEndOfFrame();
+        }
     }
 
     void OnCollisionEnter2D()
