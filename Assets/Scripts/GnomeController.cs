@@ -8,7 +8,6 @@ public class GnomeController : MonoBehaviour
     public float RunForce;
     public float TurnAroundMultiplier;
     public float DecelMultiplier;
-    public GameObject SelectionObject;
 
     public enum GnomeColor {
         Red,
@@ -19,20 +18,24 @@ public class GnomeController : MonoBehaviour
 
     Rigidbody2D _rb;
     GnomeController _onHead;
+    Animator _anim;
     bool _selected;
     bool _grounded;
 
     void Awake()
     {
-        SelectionObject.SetActive(false);
         _rb = GetComponent<Rigidbody2D>();
         _selected = false;
+        _anim = GetComponentInChildren<Animator>();
     }
 
     public void SetSelected(bool selected)
     {
+        if (_anim == null) {
+        } else {
+            _anim.SetBool("Selected", selected);
+        }
         _selected = selected;
-        SelectionObject.SetActive(_selected);
     }
 
     void FixedUpdate()
