@@ -27,7 +27,7 @@ public class Singleton<T> : MonoBehaviour where T : Singleton<T>
     {
         DontDestroyOnLoad(gameObject);
 
-        if (FindObjectsOfType<SceneLoader>().Length > 1) {
+        if (FindObjectsOfType<T>().Length > 1) {
             Destroy(gameObject);
             return true;
         }
