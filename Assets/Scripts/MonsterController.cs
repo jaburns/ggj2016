@@ -7,6 +7,7 @@ public class MonsterController : MonoBehaviour
     bool _startedWriting;
     bool _done;
     Animator _anim;
+    GameObject _whiteboard;
 
     void Start ()
     {
@@ -16,6 +17,9 @@ public class MonsterController : MonoBehaviour
 
         SkyBoxController.Instance.OnDusk.Sub(gameObject, OnDusk);
         SkyBoxController.Instance.OnNightEnd.Sub(gameObject, OnNightEnd);
+
+        _whiteboard = GameObject.Find("WhiteboardStuff");
+        if (_whiteboard != null) _whiteboard.SetActive(false);
 
         SoundPlayer.Instance.Play("DayMusic");
     }
@@ -56,6 +60,7 @@ public class MonsterController : MonoBehaviour
         _anim.SetBool("Scribbling", false);
         SkyBoxController.Instance.StartNight(FindObjectOfType<LevelTime>().LevelLength);
         GnomeSelector.gnomesEnabled = true;
+        if (_whiteboard != null) _whiteboard.SetActive(true);
         MusicPlayer.Instance.PlayTrack("Puzzle1", false);
     }
 
