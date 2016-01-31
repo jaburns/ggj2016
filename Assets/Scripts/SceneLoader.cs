@@ -64,7 +64,7 @@ public class SceneLoader : Singleton<SceneLoader>
 
     static public void NextLevel()
     {
-        if(currentLevel < 4)
+        if(currentLevel < 5)
         {
             currentLevel++;
         }
