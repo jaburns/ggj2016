@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: lambert3
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Name: Brown2
+  m_Shader: {fileID: 10755, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: -1
@@ -135,4 +135,4 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: .670588255, g: .384313762, b: .149019614, a: 1}
+        second: {r: .433823526, g: .256598264, b: .0956963524, a: 1}

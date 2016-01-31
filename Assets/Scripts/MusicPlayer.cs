@@ -6,8 +6,12 @@ public class MusicPlayer : Singleton<MusicPlayer>
     const float MASTER_VOLUME = 1f;
 
     readonly static Dictionary<string, float> VOLUMES = new Dictionary<string, float> {
-        {"TitleScreen", 2f},
-        {"Puzzle1", .4f}
+        {"TitleScreen", 1.0f},
+        {"Puzzle1",     0.8f},
+        {"Puzzle2",     0.6f},
+        {"Puzzle3",     1.0f},
+        {"Puzzle4",     1.0f},
+        {"Puzzle5",     1.0f}
     };
 
     Dictionary<string, AudioClip> _clips;

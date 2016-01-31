@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class MonsterController : MonoBehaviour
 {
+    // Music clip lengths
     // Puzzle1 37
     // Puzzle2 29
     // Puzzle3 38
@@ -14,6 +15,7 @@ public class MonsterController : MonoBehaviour
     bool _done;
     Animator _anim;
     GameObject _whiteboard;
+    GameObject _fence;
 
     void Start ()
     {
@@ -24,6 +26,7 @@ public class MonsterController : MonoBehaviour
         SkyBoxController.Instance.OnDusk.Sub(gameObject, OnDusk);
         SkyBoxController.Instance.OnNightEnd.Sub(gameObject, OnNightEnd);
 
+        _fence = GameObject.Find("Fence_Animated");
         _whiteboard = GameObject.Find("WhiteboardStuff");
         if (_whiteboard != null) _whiteboard.SetActive(false);
 
@@ -51,11 +54,14 @@ public class MonsterController : MonoBehaviour
         if (_whiteboard != null) _whiteboard.SetActive(false);
         SoundPlayer.Instance.Play("MonsterLaughing");
         _done = true;
+
         StartCoroutine(happyRoutine());
     }
 
     IEnumerator happyRoutine()
     {
+                        //StartCoroutine(fenceRoutine());
+
         transform.localScale *= 0.5f;
         GnomeSelector.gnomesEnabled = false;
         MusicPlayer.Instance.Stop();
@@ -82,6 +88,13 @@ public class MonsterController : MonoBehaviour
         GnomeSelector.gnomesEnabled = false;
         yield return new WaitForSeconds(5f);
         SceneLoader.ReloadLevel();
+    }
+
+    IEnumerator fenceRoutine()
+    {
+        return null;
+//        yield
+//        _fence.
     }
 
     void OnCollisionEnter2D()
