@@ -11,6 +11,10 @@ public class StartBlock : MonoBehaviour
 
     void Awake()
     {
+        if (!JustSound) {
+            MusicPlayer.Instance.PlayTrack("TitleScreen", true);
+        }
+
         GnomeSelector.gnomesEnabled = true;
         _bounceT = 1f;
         _originalPos = transform.position;

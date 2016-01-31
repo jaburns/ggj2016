@@ -16,11 +16,14 @@ public class MonsterController : MonoBehaviour
 
         SkyBoxController.Instance.OnDusk.Sub(gameObject, OnDusk);
         SkyBoxController.Instance.OnNightEnd.Sub(gameObject, OnNightEnd);
+
+        SoundPlayer.Instance.Play("DayMusic");
     }
 
     void OnDusk()
     {
         _rb.isKinematic = false;
+        SoundPlayer.Instance.Play("MonsterFallMusic");
     }
 
     void OnNightEnd()
@@ -53,6 +56,7 @@ public class MonsterController : MonoBehaviour
         _anim.SetBool("Scribbling", false);
         SkyBoxController.Instance.StartNight(FindObjectOfType<LevelTime>().LevelLength);
         GnomeSelector.gnomesEnabled = true;
+        MusicPlayer.Instance.PlayTrack("Puzzle1", false);
     }
 
     IEnumerator angryRoutine()

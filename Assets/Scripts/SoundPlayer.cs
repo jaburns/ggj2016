@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class SoundPlayer : Singleton<SoundPlayer>
 {
+    const float MASTER_VOLUME = .4f;
+
     readonly static Dictionary<string, float> VOLUMES = new Dictionary<string, float> {
-        { "explosion", 1 }
-      , { "base", 1.5f }
     };
 
     Dictionary<string, AudioClip[]> _clipSets;
@@ -18,7 +18,7 @@ public class SoundPlayer : Singleton<SoundPlayer>
         _clipSets = new Dictionary<string, AudioClip[]>();
 
         _sounder = gameObject.AddComponent<AudioSource>();
-        _sounder.volume = 0.4f;
+        _sounder.volume = MASTER_VOLUME;
     }
 
     public void Play(string name)
