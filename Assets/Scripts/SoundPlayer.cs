@@ -6,6 +6,7 @@ public class SoundPlayer : Singleton<SoundPlayer>
     const float MASTER_VOLUME = .4f;
 
     readonly static Dictionary<string, float> VOLUMES = new Dictionary<string, float> {
+        {"MonsterFallMusic", .8f}
     };
 
     Dictionary<string, AudioClip[]> _clipSets;

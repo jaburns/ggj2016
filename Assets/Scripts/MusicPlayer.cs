@@ -7,7 +7,7 @@ public class MusicPlayer : Singleton<MusicPlayer>
 
     readonly static Dictionary<string, float> VOLUMES = new Dictionary<string, float> {
         {"TitleScreen", 2f},
-        //{"Puzzle1", .1f}
+        {"Puzzle1", .4f}
     };
 
     Dictionary<string, AudioClip> _clips;
@@ -42,5 +42,10 @@ public class MusicPlayer : Singleton<MusicPlayer>
         _source.clip = clip;
         _source.volume = MASTER_VOLUME * volume;
         _source.Play();
+    }
+
+    public void Stop()
+    {
+        _source.Stop();
     }
 }

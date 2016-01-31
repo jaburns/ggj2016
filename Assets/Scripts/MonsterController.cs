@@ -3,6 +3,12 @@ using UnityEngine;
 
 public class MonsterController : MonoBehaviour
 {
+    // Puzzle1 37
+    // Puzzle2 29
+    // Puzzle3 38
+    // Puzzle4 49
+    // Puzzle5 63
+    //
     Rigidbody2D _rb;
     bool _startedWriting;
     bool _done;
@@ -52,25 +58,29 @@ public class MonsterController : MonoBehaviour
     {
         transform.localScale *= 0.5f;
         GnomeSelector.gnomesEnabled = false;
-        yield return new WaitForSeconds(1f);
+        MusicPlayer.Instance.Stop();
+        SoundPlayer.Instance.Play("WinMusic");
+        yield return new WaitForSeconds(5f);
         SceneLoader.NextLevel();
     }
 
     IEnumerator writeRoutine()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
         _anim.SetBool("Scribbling", false);
         SkyBoxController.Instance.StartNight(FindObjectOfType<LevelTime>().LevelLength);
         GnomeSelector.gnomesEnabled = true;
         if (_whiteboard != null) _whiteboard.SetActive(true);
-        MusicPlayer.Instance.PlayTrack("Puzzle1", false);
+        MusicPlayer.Instance.PlayTrack("Puzzle"+(SceneLoader.CurLevel+1), false);
     }
 
     IEnumerator angryRoutine()
     {
+        MusicPlayer.Instance.Stop();
+        SoundPlayer.Instance.Play("LoseMusic");
         transform.localScale *= 1.5f;
         GnomeSelector.gnomesEnabled = false;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(5f);
         SceneLoader.ReloadLevel();
     }
 
