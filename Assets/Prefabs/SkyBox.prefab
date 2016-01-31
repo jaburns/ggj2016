@@ -221,10 +221,10 @@ MonoBehaviour:
   SunSky: {fileID: 21212604}
   SkySphereStart: {x: 9.43000031, y: 6.57999992}
   SkySphereEnd: {x: -7.92000008, y: -2.55999994}
-  DayTimeStart: .600000024
-  DayTimeScale: .100000001
-  DuskLength: .100000001
-  NightTimeScale: .100000001
+  DayTimeStart: .5
+  DayTimeScale: .200000003
+  DuskLength: .200000003
+  NightTimeScale: .200000003
 --- !u!212 &21205490
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -353,7 +353,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 317d2eecf4d5a49dba92196a4da79a27, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 66a4eaeaaeb96404aa738d4797338b7b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21273120
 SpriteRenderer:
@@ -379,7 +379,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5a90d948267304a9f874eac7da56f5ff, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b746b4a65f2442ab9339f723ac35c95, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

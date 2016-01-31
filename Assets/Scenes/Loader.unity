@@ -203,6 +203,52 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b6dadf459d7e34b819c34b0c4d5ea720, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &349075420
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1572060428}
+    m_Modifications:
+    - target: {fileID: 445120, guid: bb9c530a5014d44bf93729bc5cf80431, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 445120, guid: bb9c530a5014d44bf93729bc5cf80431, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 445120, guid: bb9c530a5014d44bf93729bc5cf80431, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 445120, guid: bb9c530a5014d44bf93729bc5cf80431, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 445120, guid: bb9c530a5014d44bf93729bc5cf80431, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 445120, guid: bb9c530a5014d44bf93729bc5cf80431, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 445120, guid: bb9c530a5014d44bf93729bc5cf80431, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 445120, guid: bb9c530a5014d44bf93729bc5cf80431, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: bb9c530a5014d44bf93729bc5cf80431, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &349075421 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 445120, guid: bb9c530a5014d44bf93729bc5cf80431, type: 2}
+  m_PrefabInternal: {fileID: 349075420}
 --- !u!1 &972599360
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,6 +318,7 @@ Transform:
   - {fileID: 972599362}
   - {fileID: 2007089738}
   - {fileID: 1719434714}
+  - {fileID: 349075421}
   m_Father: {fileID: 0}
   m_RootOrder: 1
 --- !u!1 &1706274281
