@@ -10,7 +10,9 @@ public class FormChecker : MonoBehaviour
 
     void Awake()
     {
-        doneCube.SetActive(false);
+        if (doneCube != null) {
+            doneCube.SetActive(false);
+        }
     }
 
     void Update()
