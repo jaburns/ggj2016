@@ -33,6 +33,7 @@ public class MonsterController : MonoBehaviour
     void OnNightEnd()
     {
         if (_done) return;
+        if (_whiteboard != null) _whiteboard.SetActive(false);
         SoundPlayer.Instance.Play("MonsterUnhappy");
         _done = true;
         StartCoroutine(angryRoutine());
@@ -41,6 +42,7 @@ public class MonsterController : MonoBehaviour
     public void GnomesWin()
     {
         if (_done) return;
+        if (_whiteboard != null) _whiteboard.SetActive(false);
         SoundPlayer.Instance.Play("MonsterLaughing");
         _done = true;
         StartCoroutine(happyRoutine());
