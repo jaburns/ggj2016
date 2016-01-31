@@ -3,7 +3,7 @@ using System.Collections;
 
 public class SphereChecker : MonoBehaviour
 {
-    const bool SHOW = true;
+    const bool SHOW = false;
 
   public GameObject checkedObject;
 
