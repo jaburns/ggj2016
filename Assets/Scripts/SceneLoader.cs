@@ -64,10 +64,7 @@ public class SceneLoader : Singleton<SceneLoader>
 
     static public void NextLevel()
     {
-        if(currentLevel < 5)
-        {
-            currentLevel++;
-        }
+        currentLevel++;
         SceneLoader.Instance.fadeThen(() => {
             Application.LoadLevel("Level_"+currentLevel);
         });
