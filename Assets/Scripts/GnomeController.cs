@@ -102,10 +102,23 @@ public class GnomeController : MonoBehaviour
             if (contact.normal.y > 0.8f)
             {
                 _grounded = true;
-                if(MyColor==GnomeColor.Red){
-                    SoundPlayer.Instance.Play("CreatureLandBig");
+
+                var gnome = col.gameObject.GetComponent<GnomeController>();
+                if(gnome != null)
+                {
+                    if(gnome.MyColor == GnomeColor.Red)
+                    {
+                        Debug.Log("On Big");
+                        SoundPlayer.Instance.Play("PlayerLandsOnPlayerBig");
+                    }
+                    else 
+                    {
+                        Debug.Log("On Small");
+                        SoundPlayer.Instance.Play("PlayerLandsOnPlayer");
+                    }
+
                 } else {
-                    SoundPlayer.Instance.Play("CreatureLand");
+                    SoundPlayer.Instance.Play("Landing");
                 }
             }
 
