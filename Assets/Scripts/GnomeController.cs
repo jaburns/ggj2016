@@ -112,7 +112,6 @@ public class GnomeController : MonoBehaviour
                     }
                     else 
                     {
-                        Debug.Log("On Small");
                         SoundPlayer.Instance.Play("PlayerLandsOnPlayer");
                     }
 
