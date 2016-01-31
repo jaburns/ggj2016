@@ -3,55 +3,58 @@ using System.Collections;
 
 public class FormChecker : MonoBehaviour
 {
-  public GameObject doneCube;
+    public GameObject doneCube;
 
-  public bool isChecked = false;
-  float timer = 0;
+    public bool isChecked = false;
+    float timer = 0;
 
-  void Awake()
-  {
-      doneCube.SetActive(false);
-  }
-
-  void Update()
-  {
-    var formChecked = true;
-    foreach (Transform sphereTransform in transform)
+    void Awake()
     {
+        doneCube.SetActive(false);
+    }
 
-      var sphere = sphereTransform.gameObject;
-
-      var checker = sphere.GetComponent<SphereChecker>();
-      if (checker != null)
-      {
-        if (!checker.isChecked)
+    void Update()
+    {
+        var formChecked = true;
+        foreach (Transform sphereTransform in transform)
         {
-          formChecked = false;
-          break;
+
+            var sphere = sphereTransform.gameObject;
+
+            var checker = sphere.GetComponent<SphereChecker>();
+            if (checker != null)
+            {
+                if (!checker.isChecked)
+                {
+                    formChecked = false;
+                    break;
+                }
+            }
         }
-      }
-    }
 
-    if (!formChecked)
-    {
-      timer = 0;
-    } else
-    {
-      timer += Time.deltaTime;
-    }
+        if (!formChecked)
+        {
+            timer = 0;
+        }
+        else
+        {
+            timer += Time.deltaTime;
+        }
 
-    if (timer > 1)
-    {
-      isChecked = true;
-    } else
-    {
-      isChecked = false;
-    }
+        if (timer > 1)
+        {
+            isChecked = true;
+        }
+        else
+        {
+            isChecked = false;
+        }
 
 
-    if (isChecked) {
-        Destroy(this);
-        FindObjectOfType<MonsterController>().GnomesWin();
+        if (isChecked)
+        {
+            Destroy(this);
+            FindObjectOfType<MonsterController>().GnomesWin();
+        }
     }
-  }
 }

@@ -58,14 +58,21 @@ public class SceneLoader : Singleton<SceneLoader>
         _afterFade = fn;
     }
 
+    static int currentLevel = 0;
+
     static public void NextLevel()
     {
-        SceneLoader.Instance.fadeThen(() => Application.LoadLevel("Level_1"));
+        if(currentLevel < 2)
+        {
+            currentLevel++;
+        }
+        SceneLoader.Instance.fadeThen(() => Application.LoadLevel("Level_"+currentLevel));
     }
 
     static public void StartGame()
     {
         SceneLoader.Instance.fadeThen(() => Application.LoadLevel("Level_0"));
+        currentLevel = 0;
     }
 
     static public void ReloadLevel()
