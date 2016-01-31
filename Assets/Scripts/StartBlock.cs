@@ -39,7 +39,7 @@ public class StartBlock : MonoBehaviour
     IEnumerator waitAndLoad()
     {
         yield return new WaitForSeconds(.3f);
-        Application.LoadLevel("Level_0");
+        SceneLoader.StartGame();
     }
 
     void Update()

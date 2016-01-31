@@ -1,0 +1,306 @@
+fileFormatVersion: 2
+guid: 9c7874d87668d42e791a0707a135c981
+timeCreated: 1454206747
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: group10
+    100002: group12
+    100004: group2
+    100006: group3
+    100008: group4
+    100010: group7
+    100012: group8
+    100014: group9
+    100016: joint10
+    100018: joint11
+    100020: joint12
+    100022: joint13
+    100024: joint14
+    100026: joint15
+    100028: joint16
+    100030: joint6
+    100032: joint7
+    100034: joint8
+    100036: joint9
+    100038: //RootNode
+    100040: nurbsCircle1
+    100042: nurbsCircle2
+    100044: nurbsCircle3
+    100046: nurbsCircle4
+    100048: nurbsCircle5
+    100050: nurbsCircle6
+    100052: nurbsCircle7
+    100054: nurbsCircle8
+    100056: nurbsCircle9
+    100058: polySurface93
+    400000: group10
+    400002: group12
+    400004: group2
+    400006: group3
+    400008: group4
+    400010: group7
+    400012: group8
+    400014: group9
+    400016: joint10
+    400018: joint11
+    400020: joint12
+    400022: joint13
+    400024: joint14
+    400026: joint15
+    400028: joint16
+    400030: joint6
+    400032: joint7
+    400034: joint8
+    400036: joint9
+    400038: //RootNode
+    400040: nurbsCircle1
+    400042: nurbsCircle2
+    400044: nurbsCircle3
+    400046: nurbsCircle4
+    400048: nurbsCircle5
+    400050: nurbsCircle6
+    400052: nurbsCircle7
+    400054: nurbsCircle8
+    400056: nurbsCircle9
+    400058: polySurface93
+    4300000: polySurface93
+    7400000: Take 001
+    7400002: TakeFrozen
+    9500000: //RootNode
+    13700000: polySurface93
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: joint14
+        weight: 1
+      - path: joint14/joint6
+        weight: 1
+      - path: joint14/joint6/joint7
+        weight: 1
+      - path: joint14/joint6/joint7/joint8
+        weight: 1
+      - path: joint14/joint9
+        weight: 1
+      - path: joint14/joint9/joint10
+        weight: 1
+      - path: joint14/joint9/joint10/joint11
+        weight: 1
+      - path: joint14/joint13
+        weight: 1
+      - path: joint14/joint13/joint12
+        weight: 1
+      - path: joint14/joint15
+        weight: 1
+      - path: joint14/joint15/joint16
+        weight: 1
+      - path: nurbsCircle9
+        weight: 1
+      - path: nurbsCircle9/group2
+        weight: 1
+      - path: nurbsCircle9/group2/nurbsCircle1
+        weight: 1
+      - path: nurbsCircle9/group2/nurbsCircle1/group3
+        weight: 1
+      - path: nurbsCircle9/group2/nurbsCircle1/group3/nurbsCircle2
+        weight: 1
+      - path: nurbsCircle9/group2/nurbsCircle1/group3/nurbsCircle2/group4
+        weight: 1
+      - path: nurbsCircle9/group2/nurbsCircle1/group3/nurbsCircle2/group4/nurbsCircle3
+        weight: 1
+      - path: nurbsCircle9/group7
+        weight: 1
+      - path: nurbsCircle9/group7/nurbsCircle4
+        weight: 1
+      - path: nurbsCircle9/group7/nurbsCircle4/group8
+        weight: 1
+      - path: nurbsCircle9/group7/nurbsCircle4/group8/nurbsCircle5
+        weight: 1
+      - path: nurbsCircle9/group7/nurbsCircle4/group8/nurbsCircle5/group9
+        weight: 1
+      - path: nurbsCircle9/group7/nurbsCircle4/group8/nurbsCircle5/group9/nurbsCircle6
+        weight: 1
+      - path: nurbsCircle9/group10
+        weight: 1
+      - path: nurbsCircle9/group10/nurbsCircle7
+        weight: 1
+      - path: nurbsCircle9/group10/nurbsCircle7/group12
+        weight: 1
+      - path: nurbsCircle9/group10/nurbsCircle7/group12/nurbsCircle8
+        weight: 1
+      - path: polySurface93
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: TakeFrozen
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: joint14
+        weight: 1
+      - path: joint14/joint6
+        weight: 1
+      - path: joint14/joint6/joint7
+        weight: 1
+      - path: joint14/joint6/joint7/joint8
+        weight: 1
+      - path: joint14/joint9
+        weight: 1
+      - path: joint14/joint9/joint10
+        weight: 1
+      - path: joint14/joint9/joint10/joint11
+        weight: 1
+      - path: joint14/joint13
+        weight: 1
+      - path: joint14/joint13/joint12
+        weight: 1
+      - path: joint14/joint15
+        weight: 1
+      - path: joint14/joint15/joint16
+        weight: 1
+      - path: nurbsCircle9
+        weight: 1
+      - path: nurbsCircle9/group2
+        weight: 1
+      - path: nurbsCircle9/group2/nurbsCircle1
+        weight: 1
+      - path: nurbsCircle9/group2/nurbsCircle1/group3
+        weight: 1
+      - path: nurbsCircle9/group2/nurbsCircle1/group3/nurbsCircle2
+        weight: 1
+      - path: nurbsCircle9/group2/nurbsCircle1/group3/nurbsCircle2/group4
+        weight: 1
+      - path: nurbsCircle9/group2/nurbsCircle1/group3/nurbsCircle2/group4/nurbsCircle3
+        weight: 1
+      - path: nurbsCircle9/group7
+        weight: 1
+      - path: nurbsCircle9/group7/nurbsCircle4
+        weight: 1
+      - path: nurbsCircle9/group7/nurbsCircle4/group8
+        weight: 1
+      - path: nurbsCircle9/group7/nurbsCircle4/group8/nurbsCircle5
+        weight: 1
+      - path: nurbsCircle9/group7/nurbsCircle4/group8/nurbsCircle5/group9
+        weight: 1
+      - path: nurbsCircle9/group7/nurbsCircle4/group8/nurbsCircle5/group9/nurbsCircle6
+        weight: 1
+      - path: nurbsCircle9/group10
+        weight: 1
+      - path: nurbsCircle9/group10/nurbsCircle7
+        weight: 1
+      - path: nurbsCircle9/group10/nurbsCircle7/group12
+        weight: 1
+      - path: nurbsCircle9/group10/nurbsCircle7/group12/nurbsCircle8
+        weight: 1
+      - path: polySurface93
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

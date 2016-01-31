@@ -6,11 +6,13 @@ public class MonsterController : MonoBehaviour
     Rigidbody2D _rb;
     bool _startedWriting;
     bool _done;
+    Animator _anim;
 
     void Start ()
     {
         GnomeSelector.gnomesEnabled = false;
         _rb = GetComponent<Rigidbody2D>();
+        _anim = GetComponentInChildren<Animator>();
 
         SkyBoxController.Instance.OnDusk.Sub(gameObject, OnDusk);
         SkyBoxController.Instance.OnNightEnd.Sub(gameObject, OnNightEnd);
@@ -46,7 +48,7 @@ public class MonsterController : MonoBehaviour
     IEnumerator writeRoutine()
     {
         yield return new WaitForSeconds(1f);
-        transform.localScale *= 0.9f;
+        _anim.SetBool("Scribbling", false);
         SkyBoxController.Instance.StartNight(FindObjectOfType<LevelTime>().LevelLength);
         GnomeSelector.gnomesEnabled = true;
     }
@@ -63,6 +65,7 @@ public class MonsterController : MonoBehaviour
     {
         if (!_startedWriting) {
             _startedWriting = true;
+            _anim.SetBool("Scribbling", true);
             SkyBoxController.Instance.ShowCracks();
             StartCoroutine(writeRoutine());
         }
