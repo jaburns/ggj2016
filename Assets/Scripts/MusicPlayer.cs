@@ -9,7 +9,7 @@ public class MusicPlayer : Singleton<MusicPlayer>
         {"TitleScreen", 1.0f},
         {"Puzzle1",     0.8f},
         {"Puzzle2",     0.6f},
-        {"Puzzle3",     1.0f},
+        {"Puzzle3",     0.8f},
         {"Puzzle4",     1.0f},
         {"Puzzle5",     1.0f}
     };
