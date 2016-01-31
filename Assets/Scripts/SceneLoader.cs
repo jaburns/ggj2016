@@ -71,7 +71,7 @@ public class SceneLoader : Singleton<SceneLoader>
 
     static public void StartGame()
     {
-        SceneLoader.Instance.fadeThen(() => Application.LoadLevel("Level_b"));
+        SceneLoader.Instance.fadeThen(() => Application.LoadLevel("Level_0"));
         currentLevel = 0;
     }
 
