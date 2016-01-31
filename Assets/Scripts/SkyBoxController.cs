@@ -11,6 +11,7 @@ public class SkyBoxController : Singleton<SkyBoxController>
     public SpriteRenderer NightGround;
     public SpriteRenderer SunGround;
     public SpriteRenderer SunStump;
+    public SpriteRenderer Cracks;
 
     public Vector2 SkySphereStart;
     public Vector2 SkySphereEnd;
@@ -34,6 +35,7 @@ public class SkyBoxController : Singleton<SkyBoxController>
 
     void Awake()
     {
+        Cracks.color = vis(0);
         _skyIsNight = false;
         _paused = false;
         _skyStateT = DayTimeStart;
@@ -71,6 +73,11 @@ public class SkyBoxController : Singleton<SkyBoxController>
     public void StartNight()
     {
         _paused = false;
+    }
+
+    public void ShowCracks()
+    {
+        Cracks.color = vis(1);
     }
 
     void updateGraphics()
