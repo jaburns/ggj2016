@@ -28,13 +28,16 @@ public class InputGrabber : Singleton<InputGrabber>
 
         public GnomeInputState Step(bool left, bool right, bool up)
         {
+            up = up? up : MobileController.jumpButtonPressed;
+            MobileController.jumpButtonPressed = false;
             var newState = new GnomeInputState {
                 LeftButton = LeftButton.Step(left),
                 RightButton = RightButton.Step(right),
                 JumpButton = JumpButton.Step(up),
             };
 
-            newState.WalkAxis = newState.RightButton.Pressing ? 1f : newState.LeftButton.Pressing ? -1f : 0;
+            newState.WalkAxis = (newState.RightButton.Pressing || MobileController.rightButtonPressed) ? 1f : 
+                (newState.LeftButton.Pressing || MobileController.leftButtonPressed) ? -1f : 0;
 
             return newState;
         }
