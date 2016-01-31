@@ -36,7 +36,7 @@ public class InputGrabber : Singleton<InputGrabber>
                 JumpButton = JumpButton.Step(up),
             };
 
-            newState.WalkAxis = (newState.RightButton.Pressing || MobileController.rightButtonPressed) ? 1f : 
+            newState.WalkAxis = (newState.RightButton.Pressing || MobileController.rightButtonPressed) ? 1f :
                 (newState.LeftButton.Pressing || MobileController.leftButtonPressed) ? -1f : 0;
 
             return newState;
@@ -44,7 +44,7 @@ public class InputGrabber : Singleton<InputGrabber>
     }
 
     readonly KeyCode[] WATCH_KEYS = {
-        KeyCode.A, KeyCode.D, KeyCode.W
+        KeyCode.A, KeyCode.D, KeyCode.W, KeyCode.Space
     };
 
     GnomeInputState _curInputs;
@@ -89,7 +89,7 @@ public class InputGrabber : Singleton<InputGrabber>
         _curInputs = _curInputs.Step(
             _keysDown.Contains(KeyCode.A),
             _keysDown.Contains(KeyCode.D),
-            _keysDown.Contains(KeyCode.W));
+            _keysDown.Contains(KeyCode.W) || _keysDown.Contains(KeyCode.Space));
 
         _inputWasProcessed = true;
     }
