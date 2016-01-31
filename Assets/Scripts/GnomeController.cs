@@ -108,7 +108,6 @@ public class GnomeController : MonoBehaviour
                 {
                     if(gnome.MyColor == GnomeColor.Red)
                     {
-                        Debug.Log("On Big");
                         SoundPlayer.Instance.Play("PlayerLandsOnPlayerBig");
                     }
                     else 
