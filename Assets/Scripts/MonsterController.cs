@@ -26,6 +26,7 @@ public class MonsterController : MonoBehaviour
     void OnNightEnd()
     {
         if (_done) return;
+        SoundPlayer.Instance.Play("MonsterUnhappy");
         _done = true;
         StartCoroutine(angryRoutine());
     }
@@ -33,6 +34,7 @@ public class MonsterController : MonoBehaviour
     public void GnomesWin()
     {
         if (_done) return;
+        SoundPlayer.Instance.Play("MonsterLaughing");
         _done = true;
         StartCoroutine(happyRoutine());
     }
@@ -67,6 +69,7 @@ public class MonsterController : MonoBehaviour
             _startedWriting = true;
             _anim.SetBool("Scribbling", true);
             SoundPlayer.Instance.Play("MonsterLanding");
+            SoundPlayer.Instance.Play("MonsterScribble");
             SkyBoxController.Instance.ShowCracks();
             StartCoroutine(writeRoutine());
         }
