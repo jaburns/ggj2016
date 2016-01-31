@@ -9,7 +9,7 @@ public class SceneLoader : Singleton<SceneLoader>
         if (Application.loadedLevelName != "Loader") {
             Application.LoadLevelAdditive("Loader");
         } else {
-            Application.LoadLevelAdditive("Main");
+            Application.LoadLevelAdditive("Level_0");
         }
     }
 }

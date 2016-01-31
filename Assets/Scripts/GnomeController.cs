@@ -83,7 +83,7 @@ public class GnomeController : MonoBehaviour
     float lastStepTime = 0;
 
     void WalkSound()
-    {   
+    {
         float interval = MyColor==GnomeColor.Red? redStepSoundInterval: yellowStepSoundInterval;
         if(lastStepTime + interval < Time.time)
         {
@@ -94,9 +94,9 @@ public class GnomeController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        foreach (var contact in col.contacts) 
+        foreach (var contact in col.contacts)
         {
-            if (contact.normal.y > 0.8f) 
+            if (contact.normal.y > 0.8f)
             {
                 _grounded = true;
                 if(MyColor==GnomeColor.Red){

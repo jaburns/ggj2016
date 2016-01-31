@@ -3,6 +3,8 @@ using System.Collections;
 
 public class SphereChecker : MonoBehaviour
 {
+    const bool SHOW = false;
+
   public GameObject checkedObject;
 
   public GnomeColorRequirement requireColor;
@@ -22,6 +24,15 @@ public class SphereChecker : MonoBehaviour
     {
       return numberOfCollidingGnomes > 0;
     }
+  }
+
+  void Awake()
+  {
+      if (!SHOW) {
+          foreach (var obj in GetComponentsInChildren<MeshRenderer>()) {
+              obj.enabled = false;
+          }
+      }
   }
 
   void Update()

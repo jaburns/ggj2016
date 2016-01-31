@@ -8,10 +8,12 @@ public class GnomeSelector : MonoBehaviour
         if (!mouseDown) return;
 
         var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        var overlap = Physics2D.OverlapPoint(mousePosition);
-        if (overlap == null) return;
 
-        var gnome = overlap.GetComponent<GnomeController>();
+        GnomeController gnome = null;
+        foreach (var item in Physics2D.OverlapPointAll(mousePosition)) {
+            gnome = item.GetComponent<GnomeController>();
+            if (gnome != null) break;
+        }
         if (gnome == null) return;
 
         if (Input.GetKey(KeyCode.LeftShift)) {

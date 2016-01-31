@@ -8,6 +8,8 @@ public class SkyBoxController : Singleton<SkyBoxController>
     public SpriteRenderer SunMountains;
     public SpriteRenderer NightSky;
     public SpriteRenderer SunSky;
+    public SpriteRenderer NightGround;
+    public SpriteRenderer SunGround;
 
     public Vector2 SkySphereStart;
     public Vector2 SkySphereEnd;
@@ -17,8 +19,12 @@ public class SkyBoxController : Singleton<SkyBoxController>
     public float DuskLength = .1f;
     public float NightTimeScale = 1f;
 
+    public GameEvent OnDusk;
+    public GameEvent OnNightEnd;
+
     bool _skyIsNight;
     float _skyStateT;
+    bool _paused;
 
     static Color vis(float t)
     {
@@ -28,11 +34,17 @@ public class SkyBoxController : Singleton<SkyBoxController>
     void Awake()
     {
         _skyIsNight = false;
+        _paused = false;
         _skyStateT = DayTimeStart;
+
+        OnDusk = new GameEvent();
+        OnNightEnd = new GameEvent();
     }
 
     void Update()
     {
+        if (_paused) return;
+
         var scale = _skyIsNight ? NightTimeScale : DayTimeScale;
         _skyStateT += Time.deltaTime * scale;
 
@@ -43,17 +55,31 @@ public class SkyBoxController : Singleton<SkyBoxController>
         updateGraphics();
 
         if (_skyStateT >= 1f) {
+            if (_skyIsNight) {
+                Debug.Log("End of night");
+                OnNightEnd.Broadcast();
+            } else {
+                OnDusk.Broadcast();
+            }
+            _paused = true;
             _skyStateT = 0f;
             _skyIsNight = true;
         }
+    }
 
+    public void StartNight()
+    {
+        _paused = false;
     }
 
     void updateGraphics()
     {
         if (!_skyIsNight && _skyStateT > 1f - DuskLength) {
             var duskT = (_skyStateT - (1f - DuskLength)) / DuskLength;
-            SunMountains.material.color = SunSky.material.color = vis(1 - duskT);
+            SunMountains.material.color =
+                SunGround.material.color =
+                SunSky.material.color =
+                    vis(1 - duskT);
         }
 
         var pos = Vector2.Lerp(SkySphereStart, SkySphereEnd, _skyStateT);
