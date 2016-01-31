@@ -10,6 +10,7 @@ public class SkyBoxController : Singleton<SkyBoxController>
     public SpriteRenderer SunSky;
     public SpriteRenderer NightGround;
     public SpriteRenderer SunGround;
+    public SpriteRenderer SunStump;
 
     public Vector2 SkySphereStart;
     public Vector2 SkySphereEnd;
@@ -78,6 +79,7 @@ public class SkyBoxController : Singleton<SkyBoxController>
             var duskT = (_skyStateT - (1f - DuskLength)) / DuskLength;
             SunMountains.material.color =
                 SunGround.material.color =
+                SunStump.material.color =
                 SunSky.material.color =
                     vis(1 - duskT);
         }
