@@ -27,8 +27,9 @@ public class StartBlock : MonoBehaviour
         }
         if (!fromBottom) return;
 
+        SoundPlayer.Instance.Play("BlockHit");
+
         if (JustSound) {
-            // TODO play sound
         } else if (!_started) {
             _started = true;
             StartCoroutine(waitAndLoad());

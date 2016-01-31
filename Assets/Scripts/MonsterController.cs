@@ -47,7 +47,7 @@ public class MonsterController : MonoBehaviour
 
     IEnumerator writeRoutine()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         _anim.SetBool("Scribbling", false);
         SkyBoxController.Instance.StartNight(FindObjectOfType<LevelTime>().LevelLength);
         GnomeSelector.gnomesEnabled = true;
@@ -66,6 +66,7 @@ public class MonsterController : MonoBehaviour
         if (!_startedWriting) {
             _startedWriting = true;
             _anim.SetBool("Scribbling", true);
+            SoundPlayer.Instance.Play("MonsterLanding");
             SkyBoxController.Instance.ShowCracks();
             StartCoroutine(writeRoutine());
         }
