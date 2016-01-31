@@ -2,8 +2,12 @@
 
 public class GnomeSelector : MonoBehaviour
 {
+    static public bool gnomesEnabled = true;
+
     void Update()
     {
+        if (!gnomesEnabled) return;
+
         var mouseDown = Input.GetMouseButtonDown(0);
         if (!mouseDown) return;
 

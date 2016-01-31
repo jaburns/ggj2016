@@ -11,6 +11,7 @@ public class StartBlock : MonoBehaviour
 
     void Awake()
     {
+        GnomeSelector.gnomesEnabled = true;
         _bounceT = 1f;
         _originalPos = transform.position;
     }
