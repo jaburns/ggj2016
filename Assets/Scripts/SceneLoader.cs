@@ -60,7 +60,7 @@ public class SceneLoader : Singleton<SceneLoader>
 
     static int currentLevel = 0;
 
-    static public int CurLevel { get { return currentLevel % 5; } }
+    static public int CurLevel { get { return currentLevel; } }
 
     static public void NextLevel()
     {

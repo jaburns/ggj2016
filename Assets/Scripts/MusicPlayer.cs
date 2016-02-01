@@ -9,9 +9,11 @@ public class MusicPlayer : Singleton<MusicPlayer>
         {"TitleScreen", 1.0f},
         {"Puzzle1",     0.8f},
         {"Puzzle2",     0.6f},
-        {"Puzzle3",     0.8f},
-        {"Puzzle4",     1.0f},
-        {"Puzzle5",     1.0f}
+        {"Puzzle3",     0.4f},
+        {"Puzzle4",     0.3f},
+        {"Puzzle5",     0.4f},
+        {"Puzzle6",     0.6f},
+        {"Puzzle7",     0.8f}
     };
 
     Dictionary<string, AudioClip> _clips;
